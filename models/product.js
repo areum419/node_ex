@@ -5,12 +5,27 @@ import mongoose from "mongoose";
 const productSchema = mongoose.Schema(
     // 5
     {
-        title: String,          // 제품명
-        price: Number,          // 제품가격
-        description: String,    // 제품설명
-        brand: String,          // 브랜드
+        title: {
+            type: String,
+            required: true
+        },          // 제품명
+        price: {
+            type: Number,
+            default: 0
+        },          // 제품가격
+        description: {
+            type: String,
+            min: 3,
+            max: 300
+        },    // 제품설명
+        brand: {
+            type: String
+        },          // 브랜드
         company: String,        // 제조기업
-        stock: Number          // 재고량
+        stock: {
+            type: Number,
+            default: 0
+        }          // 재고량
     } ,
     {
         timestamps: true
