@@ -26,16 +26,16 @@ router.get("/:productId", async (req,res) => {
 
     const product = await productModel.findById(req.params.productId);
 
-    if (!product){
-      res.json({
-          msg: "no product"
-      })
-    }else{
+    // if (!product){
+    //   res.json({
+    //       msg: "no product"
+    //   })
+    // }else{
         res.json({
             msg: `successful get ${req.params.productId}$`,
             product: product
         })
-    }
+    //   }
 
 })
 
