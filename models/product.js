@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 // 2
-const productsSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
     // 5
     {
         title: String,          // 제품명
@@ -18,7 +18,7 @@ const productsSchema = mongoose.Schema(
 );
 
 // 3
-const productModel = productsSchema.model("product", productsSchema); //테이블명 , 스카마(db항목들)
+const productModel = mongoose.model("product", productSchema); //테이블명 , 스카마(db항목들)
 
 
 // 4
