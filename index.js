@@ -10,6 +10,8 @@ import connectDB from "./config/database.js"; // 자동완성안됨
 
 import productRoute from "./routes/product.js";
 import orderRouter from "./routes/order.js";
+import userRouter from "./routes/user.js";
+
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 app.use("/product", productRoute);
 app.use("/order", orderRouter);
+app.use("/user", userRouter);
 
 app.get("/test", (req, res) => {
     res.json({
