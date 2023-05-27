@@ -4,6 +4,7 @@ import userModel from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import {getProfil, loginHandling, singupHandling} from "../controllers/user.js";
+import {protect} from "../middleware/authMiddleware.js";
 
 
 const router = express.Router();
@@ -14,9 +15,9 @@ router.post("/singup", singupHandling)
 // 로그인은 post 사용
 router.post("/login", loginHandling)
 
-
 //개인정보조회
-router.get("/", getProfil)
+router.get("/", protect, getProfil)
+// 2번쨰 파라미터 함수 호출이
 
 
 

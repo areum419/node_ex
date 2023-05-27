@@ -78,7 +78,8 @@ const loginHandling = async (req, res) => {
 const getProfil = async (req,res) => {
 
     res.json({
-        msg: "select"
+        msg: "select",
+        user: req.user
     })
 }
 
