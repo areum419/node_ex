@@ -58,7 +58,7 @@ const loginHandling = async (req, res) => {
         // 3. 유효기간
         {userId: user._id},
         process.env.ACCESS_TOKEN_KEY,
-        {expiresIn: "10m"}
+        {expiresIn: "1h"}
         //db상 id값이고, .env 에 추가한 토큰값이고, 유효기간은 10분으로 설정
     )
 
@@ -77,10 +77,26 @@ const loginHandling = async (req, res) => {
 
 const getProfil = async (req,res) => {
 
+    //return 값
     res.json({
         msg: "select",
         user: req.user
     })
 }
 
-export {singupHandling, loginHandling, getProfil}
+// 관리자만 전체 조회할수 있게
+const getAllUsers = async (req, res) => {
+    const users = await userModel.find();
+
+    if(req.user.isAdmin === false){
+        return res.json({
+            msg: "you are not Admin"
+        })
+    }
+
+    res.json({
+        msg: "all users!!",
+        users
+    })
+}
+export {singupHandling, loginHandling, getProfil, getAllUsers}
