@@ -9,7 +9,7 @@ import {
     productDelete,
     productUpdate
 } from "../controllers/product.js";
-import {protect} from "../middleware/authMiddleware.js";
+import {admin, protect} from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // 전체조회
@@ -19,16 +19,15 @@ router.get("/", getAllProducts)
 router.get("/:productId", protect, getProductById)
 
 // 생성
-router.post("/", productCreate)
+router.post("/", protect, admin, productCreate)
 
 // 수정API
-router.put("/:productId", productUpdate)
-
+router.put("/:productId", protect, admin, productUpdate)
 
 //전체 삭제
-router.delete("/", productAllDelete)
+router.delete("/", protect, admin, productAllDelete)
 
 //단건 삭제
-router.delete("/:productId", productDelete)
+router.delete("/:productId", protect, admin, productDelete)
 
 export default router;

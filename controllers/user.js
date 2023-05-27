@@ -88,11 +88,12 @@ const getProfil = async (req,res) => {
 const getAllUsers = async (req, res) => {
     const users = await userModel.find();
 
-    if(req.user.isAdmin === false){
-        return res.json({
-            msg: "you are not Admin"
-        })
-    }
+    // --> admin으로 따로 뺌
+    // if(req.user.isAdmin === false){
+    //     return res.json({
+    //         msg: "you are not Admin"
+    //     })
+    // }
 
     res.json({
         msg: "all users!!",
