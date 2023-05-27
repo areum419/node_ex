@@ -8,7 +8,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rldkfma77
-      MONGO_INITDB_DATABASE: test
     ports:
       - 27017:27017
 
@@ -23,3 +22,18 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:rldkfma77@mongo:27017/
     depends_on:
       - mongo
+
+#  backend:
+#    build:
+#      context: ./
+#      dockerfile: ./Dockerfile
+#    container_name: app-nodejs
+#    restart: always
+#    env_file:
+#      - .env
+#    volumes:
+#      - ./:/data/node_mongo/app
+#    ports:
+#      - "9090:9090"
+#    depends_on:
+#      - mongo

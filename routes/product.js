@@ -10,7 +10,6 @@ router.get("/", async (req,res) => {
     res.json({
         msg :"product get all",
         count: products.length,
-      //  products:products,
         products: products.map(item => {
             return {
                 id: item._id,
