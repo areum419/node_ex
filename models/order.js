@@ -10,6 +10,11 @@ const orderSchema = mongoose.Schema(
             ref: "product",
             required: true
         },
+        user:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user",
+            required: true
+        },
         qty:{
             type: Number,
             default: 1

@@ -1,6 +1,7 @@
 import express from "express";
 import orderModel from "../models/order.js";
 import {getAllOrder, OrderCreate} from "../controllers/order.js";
+import {protect} from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 
@@ -9,7 +10,7 @@ router.get("/", getAllOrder)
 
 
 // order 등록
-router.post("/", OrderCreate)
+router.post("/", protect, OrderCreate)
 
 
 

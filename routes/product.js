@@ -9,13 +9,14 @@ import {
     productDelete,
     productUpdate
 } from "../controllers/product.js";
+import {protect} from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // 전체조회
 router.get("/", getAllProducts)
 
 // 상세데이터 가져오는 api
-router.get("/:productId", getProductById)
+router.get("/:productId", protect, getProductById)
 
 // 생성
 router.post("/", productCreate)
